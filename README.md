@@ -16,7 +16,7 @@ benchmark:
 * Create a benchmark app by pushing the `redis_benchmark_spec.yml` as artifact
 
 ```
-cf push <APP-NAME> -p redis_benchmark_spec.yml -b https://github.com/treske/redis-benchmark-buildpack.git
+cf push <APP-NAME> -p redis_benchmark_spec.yml -b https://github.com/glebavladimir/redis-benchmark-buildpack.git
 ```
 
 * Bind the service instance `redis` to the pushed app
