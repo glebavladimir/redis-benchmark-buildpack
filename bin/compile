@@ -18,7 +18,7 @@ cp -r $DIR/../app/* $BUILD_DIR/
 cp -r $DIR/boot.sh $BUILD_DIR/
 
 # Install Redis
-#if [ ! -d $CACHE_DIR/redis_$REDIS_VERSION ]; then
+if [ ! -d $CACHE_DIR/redis_$REDIS_VERSION ]; then
   echo "Fetching and installing Redis $REDIS_VERSION"
   mkdir -p $CACHE_DIR/redis_$REDIS_VERSION
   cd $CACHE_DIR/redis_$REDIS_VERSION
@@ -29,11 +29,11 @@ cp -r $DIR/boot.sh $BUILD_DIR/
   make PREFIX=$CACHE_DIR/redis_$REDIS_VERSION install
   mkdir -p $BUILD_DIR/cmd/
   cp -r $CACHE_DIR/redis_$REDIS_VERSION/redis-$REDIS_VERSION/src/redis-benchmark $BUILD_DIR/cmd/redis-benchmark
-#else
-#  echo "Installing redis from cache"
-#  mkdir -p $BUILD_DIR/cmd/
-#  cp -r $CACHE_DIR/redis_$REDIS_VERSION/redis-$REDIS_VERSION/src/redis-benchmark $BUILD_DIR/cmd/redis-benchmark
-#fi
+else
+  echo "Installing redis from cache"
+  mkdir -p $BUILD_DIR/cmd/
+  cp -r $CACHE_DIR/redis_$REDIS_VERSION/redis-$REDIS_VERSION/src/redis-benchmark $BUILD_DIR/cmd/redis-benchmark
+fi
 
 # Prepare Install Ruby Gems
 mkdir -p $BUILD_DIR/ruby_gems
