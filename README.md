@@ -4,23 +4,22 @@ The `redis-benchmark-buildpack` is a Cloud Foundry buildpack for running Redis b
 
 ## Usage
 
-* Create a file named `redis_benchmark_spec.yml` and add the following contents
+* Edit a file named `redis_benchmark_spec.yml` and specify following options
 
 ```
 benchmark:
   clients: 75
   requests: 150000
+  size: 3
 ```
 
 * Create a Redis service instance named `redis`
-* Create a benchmark app by pushing the `redis_benchmark_spec.yml` as artifact
+* Create a benchmark app
 
 ```
-cf push <APP-NAME> -p redis_benchmark_spec.yml -b https://github.com/glebavladimir/redis-benchmark-buildpack.git
+cf push <APP-NAME>
 ```
 
-* Bind the service instance `redis` to the pushed app
-* Restage the app
 * Invoke the app
 
 ## Limitations
