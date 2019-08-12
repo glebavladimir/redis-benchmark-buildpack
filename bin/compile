@@ -3,7 +3,7 @@
 set -e            # fail fast
 set -o pipefail   # do not ignore exit codes when piping output
 set -o posix      # more strict failures in subshells
-#set -x            # enable debugging
+set -x            # enable debugging
 
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 BUILD_DIR=$1
@@ -43,6 +43,8 @@ mkdir -p $BUILD_DIR/ruby_gems_spec
 export GEM_HOME=$BUILD_DIR/ruby_gems
 export GEM_SPEC_CACHE=$BUILD_DIR/ruby_gems_spec
 export PATH=$PATH:$GEM_HOME/bin
+
+apt-get install ruby`ruby -e 'puts RUBY_VERSION[/\d+\.\d+/]'`-dev
 
 # Perform install of Ruby Gems
 gem install bundler --no-rdoc --no-ri 
