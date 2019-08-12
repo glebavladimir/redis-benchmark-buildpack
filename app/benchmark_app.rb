@@ -32,6 +32,8 @@ class RedisBenchmarkApp < Sinatra::Base
     cmd.concat(redis_benchmark_opts['benchmark']['clients'].to_s)
     cmd.concat(' -n ')
     cmd.concat(redis_benchmark_opts['benchmark']['requests'].to_s)
+    cmd.concat(' -d ')
+    cmd.concat(redis_benchmark_opts['benchmark']['size'].to_s)
     pp cmd
 
     # Stream output to clients
