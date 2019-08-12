@@ -9,7 +9,7 @@ DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 BUILD_DIR=$1
 CACHE_DIR=$2
 
-REDIS_VERSION="3.0.1"
+REDIS_VERSION="5.0.5"
 
 # Copy app to build dir
 cp -r $DIR/../app/* $BUILD_DIR/
