@@ -14,11 +14,11 @@ class RedisBenchmarkApp < Sinatra::Base
   get '/' do
     # Get 
     redis_benchmark_opts = YAML.load_file("redis_benchmark_spec.yml")
-    pp redis_benchmark_opts    
+    #pp redis_benchmark_opts
 
     # Get Redis service credentials
     redis = CF::App::Credentials.find_by_service_name('redis')
-    pp redis
+    #pp redis
 
     # Concatenate Redis Benchmark command
     cmd = './cmd/redis-benchmark'
@@ -34,16 +34,8 @@ class RedisBenchmarkApp < Sinatra::Base
     cmd.concat(redis_benchmark_opts['benchmark']['requests'].to_s)
     cmd.concat(' -d ')
     cmd.concat(redis_benchmark_opts['benchmark']['size'].to_s)
-    pp cmd
+    #pp cmd
 
-    # Stream output to clients
-    stream do |outp|
-      IO.popen(cmd, 'r') do |io|
-        while line=io.gets
-          outp << '<br>'
-          outp << line
-        end
-      end
-    end
+    system(cmd)
   end
 end
