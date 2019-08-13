@@ -13,7 +13,7 @@ $stdout.sync = true
 class RedisBenchmarkApp < Sinatra::Base
   get '/' do
     # Get 
-    redis_benchmark_opts = YAML.load_file("redis_benchmark_spec.yml")
+    redis_benchmark_opts = YAML.load_file("spec.yml")
     #pp redis_benchmark_opts
 
     # Get Redis service credentials
