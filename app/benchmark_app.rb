@@ -22,6 +22,7 @@ class RedisBenchmarkApp < Sinatra::Base
 
     # Concatenate Redis Benchmark command
     cmd = './cmd/redis-benchmark'
+    cmd.concat(' -q ') if redis_benchmark_opts['benchmark']['quiet'].to_s.downcase == "true"
     cmd.concat(' -h ')
     cmd.concat(redis['host'])
     cmd.concat(' -p ')

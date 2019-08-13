@@ -2,3 +2,4 @@ benchmark:
   clients: 75
   requests: 150000
   size: 3
+  quiet: "true"
